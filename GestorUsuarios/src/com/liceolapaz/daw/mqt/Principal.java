@@ -1,7 +1,7 @@
 package com.liceolapaz.daw.mqt;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -50,7 +50,57 @@ public class Principal {
     }
 
     private static void exportarUsuarios() {
+        System.out.print("Indica la ruta en la que se generará el archivo con los usuarios: ");
+        String ruta = leerTexto();
 
+        try {
+            FileWriter fw = new FileWriter(ruta);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            String linea;
+
+            LocalDateTime fechaActual = LocalDateTime.now();
+
+            linea = "Fecha: " + fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
+            pw.println(linea);
+
+            linea = "Hora: " + fechaActual.getHour() + ":" + fechaActual.getMinute() + ":" + fechaActual.getSecond();
+            pw.println(linea);
+
+            linea = "Número de usuarios: " + usuarios.size();
+            pw.println(linea);
+
+            linea = "\n";
+            pw.println(linea);
+
+            linea = "[";
+            pw.println(linea);
+
+            linea = "  {";
+            pw.println(linea);
+
+
+            for (Usuario usuario : usuarios.values()) {
+                linea = usuario.toString();
+
+                if (!linea.isEmpty()) {
+                    linea = linea.substring(0, linea.length() - 1); // Esto borra la coma de la última interacción del bucle.
+                }
+
+                pw.println(linea);
+            }
+
+            linea = "]";
+            pw.println(linea);
+
+            pw.close();
+            fw.close();
+            bw.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al generar el archivo de usuarios.");
+        }
     }
 
     private static void eliminarUsuario() {

@@ -6,6 +6,8 @@ out/
 
 *.pdf
 
+Usuarios_Ejemplo_Exportar.txt
+
 ### Eclipse ###
 .apt_generated
 .classpath

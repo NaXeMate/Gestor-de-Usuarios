@@ -17,8 +17,13 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", avatar=" + avatar + "]";
+        return "  {\n"
+                + "    \"id\": " + id + ",\n"
+                + "    \"email\": " + email + ",\n"
+                + "    \"first_name\": " + firstName + ",\n"
+                + "    \"last_name\": " + lastName + ",\n"
+                + "    \"avatar\": " + avatar + "\n"
+                + "  },";
     }
 
     public int getId() {
