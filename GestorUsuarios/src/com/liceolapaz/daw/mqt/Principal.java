@@ -58,7 +58,64 @@ public class Principal {
     }
 
     private static void modificarUsuario() {
+        System.out.print("Escribe el ID del usuario que se va a modificar: ");
+        int idOG = leerNumero();
 
+        if (!usuarios.containsKey(idOG)) {
+            System.out.println("El usuario que estás buscando no está registrado. Volviendo al menú principal...");
+        }
+
+        System.out.print("Escribe el ID que tendrá el usuario tras la modificación: ");
+        int id = leerNumero();
+
+        if (id <= 0) {
+            System.out.println("No se permiten IDs de usuario iguales o inferiores a 0.");
+            return;
+        }
+
+        System.out.print("Escribe el email que tendrá el usuario tras la modificación: ");
+        String email = leerTexto();
+
+        if (email.isEmpty()) {
+            System.out.println("El email del usuario no puede estar vacío.");
+            return;
+        }
+
+        if (!validarEmail(email)) {
+            System.out.println("El email introducido no es válido. Ejemplo: example@example.com.");
+            return;
+        }
+
+        System.out.print("Introduce el nombre que tendrá el usuario tras la modificación: ");
+        String firstName = leerTexto();
+
+        if (firstName.isEmpty()) {
+            System.out.println("El nombre del usuario no puede estar vacío.");
+        }
+
+        System.out.print("Escribe el apellido que tendrá el usuario tras la modificación: ");
+        String lastName = leerTexto();
+
+        if (lastName.isEmpty()) {
+            System.out.println("El apellido del usuario no puede estar vacío.");
+            return;
+        }
+
+        System.out.print("Escribe la URL que contenga el avatar que tendrá el usuario tras la modificación: ");
+        String avatar = leerTexto();
+
+        if (avatar.isEmpty()) {
+            System.out.println("El avatar del usuario no puede estar vacío.");
+            return;
+        }
+
+        if (!validarAvatar(avatar)) {
+            System.out.println("El avatar introducido no es válido. Ejemplo: https://...");
+            return;
+        }
+
+        Usuario usuario = new Usuario(id, email, firstName, lastName, avatar);
+        usuarios.replace(idOG, usuario);
     }
 
     private static void addUsuario() {
@@ -103,7 +160,7 @@ public class Principal {
         String avatar = leerTexto();
 
         if (avatar.isEmpty()) {
-            System.out.println("El apellido del usuario no puede estar vacío.");
+            System.out.println("El avatar del usuario no puede estar vacío.");
             return;
         }
 
