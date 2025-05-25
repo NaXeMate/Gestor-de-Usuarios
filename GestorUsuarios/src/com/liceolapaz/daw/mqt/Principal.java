@@ -62,7 +62,58 @@ public class Principal {
     }
 
     private static void addUsuario() {
+        System.out.print("Escribe el ID del nuevo usuario: ");
+        int id = leerNumero();
 
+        if (usuarios.containsKey(id)) {
+            System.out.println("El usuario ya ha sido añadido anteriormente. Volviendo al menú principal...");
+            return;
+        }
+
+        System.out.print("Escribe el email del nuevo usuario: ");
+        String email = leerTexto();
+
+        if (email.isEmpty()) {
+            System.out.println("El email del usuario no puede estar vacío.");
+            return;
+        }
+
+        if (!validarEmail(email)) {
+            System.out.println("El email introducido no es válido. Ejemplo: example@example.com.");
+            return;
+        }
+
+        System.out.print("Escribe el nombre del nuevo usuario: ");
+        String firstName = leerTexto();
+
+        if (firstName.isEmpty()) {
+            System.out.println("El nombre del usuario no puede estar vacío.");
+            return;
+        }
+
+        System.out.print("Escribe el apellido del nuevo usuario: ");
+        String lastName = leerTexto();
+
+        if (lastName.isEmpty()) {
+            System.out.println("El apellido del usuario no puede estar vacío.");
+            return;
+        }
+
+        System.out.print("Escribe la URL que contenga el avatar del nuevo usuario: ");
+        String avatar = leerTexto();
+
+        if (avatar.isEmpty()) {
+            System.out.println("El apellido del usuario no puede estar vacío.");
+            return;
+        }
+
+        if (!validarAvatar(avatar)) {
+            System.out.println("El avatar introducido no es válido. Ejemplo: https://...");
+            return;
+        }
+
+        Usuario usuario = new Usuario(id, email, firstName, lastName, avatar);
+        usuarios.put(id, usuario);
     }
 
     private static void importarUsuarios() {
@@ -134,11 +185,13 @@ public class Principal {
     }
 
     public static boolean validarAvatar(String avatar) {
-//        if (avatar.startsWith("https://")) {
-//            return true;
-//        } else {
-//            return false;
-//        }
+/*
+        if (avatar.startsWith("https://")) {
+            return true;
+        } else {
+            return false;
+        }
+*/
 
         return avatar.startsWith("https://");
     }
@@ -160,7 +213,7 @@ public class Principal {
     }
 
     private static void escribirMenu() {
-        System.out.println("""
+        System.out.print("""
                 GESTOR USUARIOS
                 1. Importar usuarios
                 2. Añadir usuario
