@@ -54,7 +54,15 @@ public class Principal {
     }
 
     private static void eliminarUsuario() {
+        System.out.print("Escribe el número del departamento: ");
+        int id = leerNumero();
 
+        if (!usuarios.containsKey(id)) {
+            System.out.println("El usuario no está registrado, no se puede eliminar. Volviendo al menú principal...");
+            return;
+        }
+
+        usuarios.remove(id);
     }
 
     private static void modificarUsuario() {
