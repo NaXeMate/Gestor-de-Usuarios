@@ -25,24 +25,4 @@ public class Usuario {
                 + "    \"avatar\": " + avatar + "\n"
                 + "  },";
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
 }
