@@ -19,10 +19,10 @@ public class Usuario {
     public String toString() {
         return "  {\n"
                 + "    \"id\": " + id + ",\n"
-                + "    \"email\": " + email + ",\n"
-                + "    \"first_name\": " + firstName + ",\n"
-                + "    \"last_name\": " + lastName + ",\n"
-                + "    \"avatar\": " + avatar + "\n"
+                + "    \"email\": \"" + email + "\",\n"
+                + "    \"first_name\": \"" + firstName + "\",\n"
+                + "    \"last_name\": \"" + lastName + "\",\n"
+                + "    \"avatar\": \"" + avatar + "\"\n"
                 + "  },";
     }
 }

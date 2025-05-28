@@ -77,14 +77,13 @@ public class Principal {
             linea = "[";
             pw.println(linea);
 
-            linea = "  {";
-            pw.println(linea);
-
+            int contador = 0;
 
             for (Usuario usuario : usuarios.values()) {
                 linea = usuario.toString();
+                contador++;
 
-                if (!linea.isEmpty()) {
+                if (contador == usuarios.values().size()) {
                     linea = linea.substring(0, linea.length() - 1); // Esto borra la coma de la última interacción del bucle.
                 }
 
